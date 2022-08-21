@@ -1,36 +1,50 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <div class="home-card p-5 bg-white rounded elevation-3">
-      <img src="https://bcw.blob.core.windows.net/public/img/8600856373152463" alt="CodeWorks Logo" class="rounded-circle">
-      <h1 class="my-5 bg-dark text-white p-3 rounded text-center">
-        Vue 3 Starter
-      </h1>
-    </div>
+  <div v-for="p in posts" :key="p.id">
+    <PostCard :post="p" />
   </div>
+  <button @click="previousClickHandler()">Previous</button>
+  <h4>1 of 20</h4>
+  <button @click="nextClickHandler()">Next</button>
 </template>
 
 <script>
+import { computed } from "@vue/reactivity";
+import { onMounted } from "vue";
+import { AppState } from "../AppState";
+import { postService } from "../services/PostService";
+import { logger } from "../utils/Logger";
+import Pop from "../utils/Pop";
+
 export default {
-  name: 'Home'
+  name: 'Home',
+  setup() {
+    async function getPosts() {
+      try {
+        await postService.getPosts()
+      } catch (error) {
+        logger.error('get posts', error)
+        Pop.error(error)
+      }
+    }
+
+    function previousClickHandler() {
+      console.log('previous')
+    }
+    function nextClickHandler() {
+      console.log('next')
+    }
+
+    onMounted(() => {
+      getPosts()
+    })
+    return {
+      posts: computed(() => AppState.posts),
+      previousClickHandler,
+      nextClickHandler
+    }
+  }
 }
 </script>
 
 <style scoped lang="scss">
-.home{
-  display: grid;
-  height: 80vh;
-  place-content: center;
-  text-align: center;
-  user-select: none;
-  .home-card{
-    width: 50vw;
-    > img{
-      height: 200px;
-      max-width: 200px;
-      width: 100%;
-      object-fit: contain;
-      object-position: center;
-    }
-  }
-}
 </style>
