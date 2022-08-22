@@ -17,9 +17,10 @@
   </div>
   <div class="row">
     <div class="col-10"></div>
-    <div class="col-2">
+    <div class="col-2 like-container">
       <h4>{{ post.likes.length }}</h4>
-      <button v-if="user.isAuthenticated">like</button>
+      <button @click="likePost()" v-if="user.isAuthenticated">like</button>
+      <button @click="handleDelete()" v-if="account.id === post.creatorId">delete</button>
     </div>
   </div>
 
@@ -29,6 +30,7 @@
 import { computed } from "@vue/reactivity";
 import { AppState } from "../AppState";
 import { Post } from "../models/Post";
+import { postService } from "../services/PostService";
 
 export default {
   name: 'PostCard',
@@ -36,9 +38,32 @@ export default {
     post: { type: Post, required: true }
   },
   setup(props) {
-    console.log(props)
+    console.log(props.post)
+    async function handleDelete() {
+      try {
+        await postService.deletePost(props.post.id)
+      }
+      catch (error) {
+        logger.error("get posts", error);
+        Pop.error(error);
+      }
+    }
+
+    async function likePost() {
+      console.log('like')
+      try {
+        await postService.likePost(props.post.id)
+      }
+      catch (error) {
+        logger.error("get posts", error);
+        Pop.error(error);
+      }
+    }
     return {
-      user: computed(() => AppState.user)
+      user: computed(() => AppState.user),
+      account: computed(() => AppState.account),
+      handleDelete,
+      likePost
     }
   }
 }
@@ -52,5 +77,9 @@ export default {
 
 .post-image {
   max-width: 600px;
+}
+
+.like-container>* {
+  float: left;
 }
 </style>
