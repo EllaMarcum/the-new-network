@@ -11,6 +11,13 @@ class PostService {
     AppState.pageCount = res.data.page
   }
 
+  async getPostsByQuery(searchText) {
+    const res = await api.get(`/api/posts?query=${searchText}`)
+    AppState.posts = res.data.posts.map(p => new Post(p))
+    AppState.totalPages = res.data.totalPages
+    AppState.pageCount = res.data.page
+  }
+
   async createPost(postData) {
     const res = await api.post('/api/posts', postData)
     AppState.posts.unshift(new Post(res.data))

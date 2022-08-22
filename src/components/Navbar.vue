@@ -10,16 +10,31 @@
       <span class="navbar-toggler-icon" />
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto">
-      </ul>
+      <form @submit.prevent="handleSearch">
+        <input type="text" v-model="searchText">
+        <button>Search</button>
+      </form>
+
     </div>
   </nav>
 </template>
 
 <script>
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+
 export default {
   setup() {
-    return {};
+    const searchText = ref('')
+    const router = useRouter()
+    function handleSearch() {
+      router.push({ name: "Search", params: { searchText: searchText.value } })
+      searchText.value = ''
+    }
+    return {
+      searchText,
+      handleSearch
+    };
   },
 };
 </script>
