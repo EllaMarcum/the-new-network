@@ -1,7 +1,9 @@
 <template>
   <div class="row">
     <div class="col-2">
-      <img class="avatar" :src="post.creator.picture" alt="">
+      <router-link :to="{ name: 'Profile', params: { profileId: post.creator.id } }">
+        <img class="avatar" :src="post.creator.picture" alt="">
+      </router-link>
     </div>
     <div class="col-10">
       <h4>{{ post.creator.name }}</h4>
@@ -38,7 +40,6 @@ export default {
     post: { type: Post, required: true }
   },
   setup(props) {
-    console.log(props.post)
     async function handleDelete() {
       try {
         await postService.deletePost(props.post.id)
@@ -50,7 +51,6 @@ export default {
     }
 
     async function likePost() {
-      console.log('like')
       try {
         await postService.likePost(props.post.id)
       }
