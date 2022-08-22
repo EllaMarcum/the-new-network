@@ -1,8 +1,7 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-dark px-4">
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary px-4">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <img alt="logo" src="../assets/img/cw-logo.png" height="45" />
       </div>
     </router-link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"

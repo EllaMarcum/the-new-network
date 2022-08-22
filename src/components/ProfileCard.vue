@@ -37,4 +37,8 @@ export default {
 .coverImg {
   width: 100%;
 }
+
+.card {
+  background-color: darkslategray;
+}
 </style>
