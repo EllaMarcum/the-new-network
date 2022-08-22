@@ -12,6 +12,7 @@ export const AppState = reactive({
   pageCount: '0 of 0',
   userProfile: {},
   activeProfile: {},
-  searchedProfiles: []
+  searchedProfiles: [],
+  ads: []
 })
 

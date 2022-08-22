@@ -18,7 +18,6 @@ export default {
   name: "Profile",
   setup() {
     const route = useRoute();
-    console.log(route.params);
     async function getProfile() {
       try {
         await profileService.getProfile(route.params.profileId);
