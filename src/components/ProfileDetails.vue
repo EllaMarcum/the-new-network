@@ -11,9 +11,11 @@
     <div class="col-9">
       <h3>{{ activeProfile.name }}</h3>
       <h5>{{ activeProfile.class }}</h5>
+      <!-- maybe add not graduated or still in cohort -->
       <h5>{{ (activeProfile.graduated) ? "Graduated" : "" }}</h5>
     </div>
     <div class="col-3">
+      <!-- fix this- v-if these if no github -->
       <a :href="activeProfile.github">GitHub</a>
       <a :href="activeProfile.linkedin">LinkedIn</a>
       <a :href="activeProfile.resume">Resume</a>
