@@ -6,6 +6,7 @@
     <div class="col-9">
       <h3>{{ profile.name }}</h3>
       <h5>{{ profile.class }}</h5>
+      <!-- maybe add not graduated instead of empty string -->
       <h5>{{ (profile.graduated) ? "Graduated" : "" }}</h5>
     </div>
   </div>

@@ -28,6 +28,7 @@
       </div>
       <div class="row">
         <div class="col-12">
+          <!-- FIX-ME make this info editable -->
           <h3>{{ profile.name }}</h3>
           <h5>{{ profile.class }}</h5>
           <h5>{{ (profile.graduated) ? "Graduated" : "" }}</h5>

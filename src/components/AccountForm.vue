@@ -18,6 +18,11 @@
         <textarea type="text" class="form-control" v-model="editable.bio" required name="bio" rows="8"
           style="resize:none"></textarea>
       </div>
+      <!-- <div>DID NOT WORK-caused massive error when sumbmitted
+        <label for="graduated">Graduation Status:</label>
+        <textarea type="text" class="form-control" v-model="editable.graduated" required name="graduated" rows="8"
+          style="resize:none"></textarea>
+      </div> -->
       <div>
         <button type="submit" class="btn btn-primary w-100 mt-2">Save</button>
       </div>
