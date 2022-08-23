@@ -7,7 +7,7 @@
     </div>
     <div class="col-10">
       <h4>{{ post.creator.name }}</h4>
-      <label>{{ post.updatedAt }}</label>
+      <label>{{ postTime }}</label>
       <label>{{ (post.creator.graduated) ? "Graduated" : "" }}</label>
     </div>
   </div>
@@ -62,6 +62,7 @@ export default {
     return {
       user: computed(() => AppState.user),
       account: computed(() => AppState.account),
+      postTime: computed(() => props.post.PostTime),
       handleDelete,
       likePost
     }

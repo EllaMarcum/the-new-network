@@ -3,6 +3,9 @@
   <div v-for="p in posts" :key="p.id">
     <PostCard :post="p" />
   </div>
+  <button @click="previousClickHandler()">Previous</button>
+  <h4>{{ pageCount }}</h4>
+  <button @click="nextClickHandler()">Next</button>
 </template>
 
 <script>
@@ -36,13 +39,29 @@ export default {
         Pop.error(error);
       }
     }
+    function previousClickHandler() {
+      if (AppState.postsPage > 1) {
+        AppState.postsPage--;
+        getPostByProfileId();
+      }
+    }
+    function nextClickHandler() {
+      if (AppState.postsPage < AppState.totalPages) {
+        AppState.postsPage++;
+        getPostByProfileId();
+      }
+    }
     onMounted(() => {
+      AppState.postsPage = 1;
       getProfile();
       getPostByProfileId();
     });
     return {
       activeProfile: computed(() => AppState.activeProfile),
-      posts: computed(() => AppState.posts)
+      pageCount: computed(() => AppState.pageCount),
+      posts: computed(() => AppState.posts),
+      previousClickHandler,
+      nextClickHandler
     };
   },
   components: { ProfileDetails }

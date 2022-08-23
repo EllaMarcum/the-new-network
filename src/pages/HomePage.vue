@@ -42,6 +42,7 @@ export default {
       }
     }
     onMounted(() => {
+      AppState.postsPage = 1;
       getPosts();
     });
     return {

@@ -16,9 +16,9 @@
     </div>
     <div class="col-3">
       <!-- fix this- v-if these if no github -->
-      <a :href="activeProfile.github">GitHub</a>
-      <a :href="activeProfile.linkedin">LinkedIn</a>
-      <a :href="activeProfile.resume">Resume</a>
+      <a :href="activeProfile.github"> {{ gitHubLinkText }}</a>
+      <a :href="activeProfile.linkedin">{{ linkedInLinkText }}</a>
+      <a :href="activeProfile.resume">{{ resumeLinkText }}</a>
     </div>
   </div>
   <div class="row">
@@ -29,6 +29,8 @@
 </template>
 
 <script>
+import { computed } from "@vue/reactivity";
+import { AppState } from "../AppState";
 import { Profile } from "../models/Profile";
 
 export default {
@@ -39,7 +41,9 @@ export default {
   setup(props) {
 
     return {
-
+      gitHubLinkText: computed(() => (AppState.account.github) ? "GitHub" : ""),
+      linkedInLinkText: computed(() => (AppState.account.linkedin) ? "LinkedIn" : ""),
+      resumeLinkText: computed(() => (AppState.account.resume) ? "Resume" : "")
     }
   }
 }

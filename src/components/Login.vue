@@ -32,11 +32,11 @@
           <h3>{{ account.name }}</h3>
           <h5>{{ account.class }}</h5>
           <h5>{{ (account.graduated) ? "Graduated" : "" }}</h5>
-          <a :href="account.github">GitHub</a>
+          <a :href="account.github">{{ gitHubLinkText }}</a>
           <br />
-          <a :href="account.linkedin">LinkedIn</a>
+          <a :href="account.linkedin">{{ linkedInLinkText }}</a>
           <br />
-          <a :href="account.resume">Resume</a>
+          <a :href="account.resume">{{ resumeLinkText }}</a>
         </div>
       </div>
     </div>
@@ -54,6 +54,9 @@ export default {
     return {
       user: computed(() => AppState.user),
       account: computed(() => AppState.account),
+      gitHubLinkText: computed(() => (AppState.account.github) ? "GitHub" : ""),
+      linkedInLinkText: computed(() => (AppState.account.linkedin) ? "LinkedIn" : ""),
+      resumeLinkText: computed(() => (AppState.account.resume) ? "Resume" : ""),
       async login() {
         AuthService.loginWithPopup();
       },
