@@ -14,15 +14,34 @@
         <input type="url" class="form-control" v-model="editable.coverImg" required name="coverImg">
       </div>
       <div>
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" v-model="editable.email" name="email" placeholder="email">
+      </div>
+      <div>
+        <label for="class">Class:</label>
+        <input type="text" class="form-control" v-model="editable.class" name="class" placeholder="class">
+      </div>
+      <div>
+        <label for="github">GitHub:</label>
+        <input type="url" class="form-control" v-model="editable.github" name="github" placeholder="github">
+      </div>
+      <div>
+        <label for="linkedin">LinkedIn:</label>
+        <input type="url" class="form-control" v-model="editable.linkedin" name="linkedin" placeholder="linkedin">
+      </div>
+      <div>
+        <label for="resume">Resume:</label>
+        <input type="url" class="form-control" v-model="editable.resume" name="resume" placeholder="resume">
+      </div>
+      <div>
+        <label for="graduated">Graduated:</label>
+        <input type="checkbox" v-model="editable.graduated" name="graduated" placeholder="graduated">
+      </div>
+      <div>
         <label for="bio">Bio:</label>
         <textarea type="text" class="form-control" v-model="editable.bio" required name="bio" rows="8"
           style="resize:none"></textarea>
       </div>
-      <!-- <div>DID NOT WORK-caused massive error when sumbmitted
-        <label for="graduated">Graduation Status:</label>
-        <textarea type="text" class="form-control" v-model="editable.graduated" required name="graduated" rows="8"
-          style="resize:none"></textarea>
-      </div> -->
       <div>
         <button type="submit" class="btn btn-primary w-100 mt-2">Save</button>
       </div>

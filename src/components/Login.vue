@@ -23,20 +23,20 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <img class="avatar" :src="profile.picture">
+          <img class="avatar" :src="account.picture">
         </div>
       </div>
       <div class="row">
         <div class="col-12">
           <!-- FIX-ME make this info editable -->
-          <h3>{{ profile.name }}</h3>
-          <h5>{{ profile.class }}</h5>
-          <h5>{{ (profile.graduated) ? "Graduated" : "" }}</h5>
-          <a :href="profile.github">GitHub</a>
+          <h3>{{ account.name }}</h3>
+          <h5>{{ account.class }}</h5>
+          <h5>{{ (account.graduated) ? "Graduated" : "" }}</h5>
+          <a :href="account.github">GitHub</a>
           <br />
-          <a :href="profile.linkedin">LinkedIn</a>
+          <a :href="account.linkedin">LinkedIn</a>
           <br />
-          <a :href="profile.resume">Resume</a>
+          <a :href="account.resume">Resume</a>
         </div>
       </div>
     </div>
@@ -54,7 +54,6 @@ export default {
     return {
       user: computed(() => AppState.user),
       account: computed(() => AppState.account),
-      profile: computed(() => AppState.userProfile),
       async login() {
         AuthService.loginWithPopup();
       },
